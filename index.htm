@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://csstools.github.io/normalize.css/">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+ 
+    <script>
+
+        var primerNumero="";
+        var segundoNumero="";
+        var operacion="";
+        var flag=false;
+        var resultado=0;
+
+        function escribirNumero(numero){
+
+            if(numero==0){
+                if(primerNumero.length==0){
+                    return;
+                }
+            }
+
+            if(flag==false){
+
+                document.getElementById("lblPrimerNumero").innerText="0";
+                document.getElementById("lblSegundoNumero").innerText="0";
+                document.getElementById("lblResultado").innerText="0";
+                document.getElementById("lblOperador").innerText="?";
+
+                primerNumero=primerNumero+numero;
+                document.getElementById("lblPrimerNumero").innerText=primerNumero;
+
+            }else{
+                segundoNumero=segundoNumero+numero;
+                document.getElementById("lblSegundoNumero").innerText=segundoNumero;
+
+            }
+            
+        }
+
+        function escribirOperacion(operacion_){
+
+            operacion=operacion_;
+            flag=true;
+            document.getElementById("lblOperador").innerText=operacion;
+        }
+
+        function operarNumerosDecimales(){
+            
+            if(operacion=="+"){
+                var resultado=parseInt(primerNumero)+parseInt(segundoNumero);
+                var res=resultado.toString(2)
+                
+                primerNumero=" "
+                segundoNumero=" "
+
+                flag=false;
+                document.getElementById("lblResultado").innerText=resultado.toString();
+                document.getElementById("lblResultadoBinario").innerText=res.toString();
+                
+            }
+
+            else if(operacion=="-"){
+                
+                var resultado=parseInt(primerNumero)-parseInt(segundoNumero);
+                var res=resultado.toString(2)
+               
+                primerNumero=" "
+                segundoNumero=" "
+
+                flag=false;
+                document.getElementById("lblResultado").innerText=resultado.toString();
+                document.getElementById("lblResultadoBinario").innerText=res.toString();
+                
+
+            }else if(operacion=="*"){
+                var resultado=parseInt(primerNumero)*parseInt(segundoNumero);
+                var res=resultado.toString(2)
+
+                primerNumero=" "
+                segundoNumero=" "
+
+                flag=false;
+                document.getElementById("lblResultado").innerText=resultado.toString();
+                document.getElementById("lblResultadoBinario").innerText=res.toString();
+
+            }else{
+
+                if (segundoNumero!=0){                  
+                var resultado=parseInt(primerNumero)/parseInt(segundoNumero);
+                var res=resultado.toString(2)
+
+                primerNumero=" "
+                segundoNumero=" "
+
+                flag=false;
+                document.getElementById("lblResultado").innerText=resultado.toString();
+                document.getElementById("lblResultadoBinario").innerText=res.toString();
+                
+            }
+                else{
+                    var resultado="error en la división"
+                    var res="error en la conversiòn"
+                    document.getElementById("lblResultado").innerText=resultado.toString();
+                    document.getElementById("lblResultadoBinario").innerText=res.toString();
+
+                }                  
+                }
+            }
+
+
+        function convertirNumeroBinario(resultado) {
+        var num = resultado;
+        num.toString(2); 
+        
+         document.getElementById("lblResultadoBinario").innerText=num.toString();
+        }
+
+        function reinicio(){
+
+        primerNumero="";
+        segundoNumero="";
+        operacion="";
+        flag=false;
+        resultado=0;
+
+        document.getElementById("lblPrimerNumero").innerText="0";
+        document.getElementById("lblSegundoNumero").innerText="0";
+        document.getElementById("lblResultado").innerText="0";
+        document.getElementById("lblOperador").innerText="?";
+        }
+
+    </script>
+     
+</head>
+<body>
+
+    <h1 class="text-center text-light bg-secondary">Calculadora Binaria</h1>
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="row" id="primer numero">
+                <label for="">Primer numero: </label>
+                <label class="plomo" id="lblPrimerNumero">0</label>
+                
+            </div>
+
+            <hr>
+
+            <div class="row" id="Operador">
+                <label for="">Operador: </label>   
+                <label class="azul" id="lblOperador"> ? </label>                   
+            </div>
+
+            <hr>
+
+            <div class="row" id="segundo numero">
+                <label for="">Segundo numero: </label>
+                <label class="plomo" id="lblSegundoNumero">0</label> 
+            </div>
+
+            <hr>
+
+            <div class="row" id="Resultado">
+                <label for="">Resultado: </label>
+                <label class="verde" id="lblResultado">0</label>
+
+            </div>
+
+            <hr>
+
+            <div class="row" id="Resultado">
+                <label for="">Resultado en binario: </label>
+                <label class="verde" id="lblResultadoBinario">0</label>
+
+            </div>
+
+            <hr>
+
+            <div class="row">
+
+                <div class="col-md-3">
+
+                    <div class="row">
+
+                        <div class="col-md-12 margen classFont">
+                           <button class="btn btn-lg btn-secondary" onclick="escribirNumero(7);">7</button> 
+                        </div>
+
+                        <div class="col-md-12 margen classFont">
+                            <button class="btn btn-lg btn-secondary" onclick="escribirNumero(4);">4</button> 
+                        </div>
+
+                        <div class="col-md-12 margen classFont">
+                            <button class="btn btn-lg btn-secondary" onclick="escribirNumero(1);">1</button> 
+                        </div>
+
+                        <div class="col-md-12 margen classFont">
+                            <button class="btn btn-lg btn-danger" onclick="reinicio();">C</button> 
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="row">
+
+                        <div class="col-md-12 margen classFont">
+                           <button class="btn btn-lg btn-secondary" onclick="escribirNumero(8);">8</button> 
+                        </div>
+
+                        <div class="col-md-12 margen classFont">
+                            <button class="btn btn-lg btn-secondary" onclick="escribirNumero(5);">5</button> 
+                        </div>
+
+                        <div class="col-md-12 margen classFont">
+                            <button class="btn btn-lg btn-secondary" onclick="escribirNumero(2);">2</button> 
+                        </div>
+
+                        <div class="col-md-12 margen classFont">
+                            <button class="btn btn-lg btn-secondary" onclick="escribirNumero(0);">0</button> 
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="row">
+
+                        <div class="col-md-12 margen classFont">
+                           <button class="btn btn-lg btn-secondary" onclick="escribirNumero(9);">9</button> 
+                        </div>
+
+                        <div class="col-md-12 margen classFont">
+                            <button class="btn btn-lg btn-secondary" onclick="escribirNumero(6);">6</button> 
+                        </div>
+
+                        <div class="col-md-12 margen classFont">
+                            <button class="btn btn-lg btn-secondary" onclick="escribirNumero(3);">3</button> 
+                        </div>
+
+                        <div class="col-md-12 margen classFont">
+                            <button class="btn btn-lg btn-success" onclick="operarNumerosDecimales();">=</button> 
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="row">
+
+                        <div class="col-md-12 margen classFont">
+                           <button class="btn btn-lg btn-primary" onclick="escribirOperacion('+')">+</button> 
+                        </div>
+
+                        <div class="col-md-12 margen classFont">
+                            <button class="btn btn-lg btn-primary" onclick="escribirOperacion('-')">-</button> 
+                        </div>
+
+                        <div class="col-md-12 margen classFont">
+                            <button class="btn btn-lg btn-primary" onclick="escribirOperacion('*')">*</button> 
+                        </div>
+
+                        <div class="col-md-12 margen classFont">
+                            <button class="btn btn-lg btn-primary" onclick="escribirOperacion('/')">/</button> 
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+        </div>
+
+
+    </div>
+
+
+</body>
+</html>

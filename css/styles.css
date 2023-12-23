@@ -1,0 +1,23 @@
+html{
+    font-family: 'Lato', sans-serif;
+}
+
+.classFont{
+    font-family: 'Lato', sans-serif;
+}
+
+.margen{
+    margin: 10px;
+}
+
+.plomo{
+    color: dimgray;
+}
+
+.azul{
+    color:rgb(33, 123, 129);
+}
+
+.verde{
+    color: rgba(0, 128, 0, 0.801);
+}
